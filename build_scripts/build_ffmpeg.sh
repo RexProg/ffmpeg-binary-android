@@ -67,7 +67,7 @@ else
     echo "Using existing `pwd`/ffmpeg-${FFMPEG_VERSION}"
 fi
 
-LIBX264_VERSION="snapshot-20171130-2245"
+LIBX264_VERSION="snapshot-20190122-2245-stable"
 if [ ! -d "x264-$LIBX264_VERSION" ]; then
     echo "Downloading x264-$LIBX264_VERSION"
     curl -O "ftp://ftp.videolan.org/pub/videolan/x264/snapshots/x264-$LIBX264_VERSION.tar.bz2"
@@ -94,8 +94,8 @@ else
     echo "Using existing `pwd`/fdk-aac-${FDK_AAC_VERSION}"
 fi
 
-LAME_MAJOR="3.99"
-LAME_VERSION="3.99.5"
+LAME_MAJOR="3.100"
+LAME_VERSION="3.100"
 if [ ! -d "lame-${LAME_VERSION}" ]; then
     echo "Downloading lame-${LAME_VERSION}"
     curl -LO http://downloads.sourceforge.net/project/lame/lame/${LAME_MAJOR}/lame-${LAME_VERSION}.tar.gz
@@ -113,7 +113,7 @@ else
     echo "Using existing `pwd`/shine"
 fi
 
-LIBOGG_VERSION="1.3.2"
+LIBOGG_VERSION="1.3.3"
 if [ ! -d "libogg-${LIBOGG_VERSION}" ]; then
     echo "Downloading libogg-${LIBOGG_VERSION}"
     curl -LO http://downloads.xiph.org/releases/ogg/libogg-${LIBOGG_VERSION}.tar.gz
@@ -122,7 +122,7 @@ else
     echo "Using existing `pwd`/libogg-${LIBOGG_VERSION}"
 fi
 
-LIBVORBIS_VERSION="1.3.4"
+LIBVORBIS_VERSION="1.3.6"
 if [ ! -d "libvorbis-${LIBVORBIS_VERSION}" ]; then
     echo "Downloading libvorbis-${LIBVORBIS_VERSION}"
     curl -LO http://downloads.xiph.org/releases/vorbis/libvorbis-${LIBVORBIS_VERSION}.tar.gz
@@ -140,7 +140,7 @@ fi
 #     echo "Using existing `pwd`/libvpx-${LIBVPX_VERSION}"
 # fi
 
-LIBFREETYPE_VERSION="2.9"
+LIBFREETYPE_VERSION="2.9.1"
 if [ ! -d "freetype-${LIBFREETYPE_VERSION}" ]; then
     echo "Downloading freetype-${LIBFREETYPE_VERSION}"
     curl -LO https://download.savannah.gnu.org/releases/freetype/freetype-${LIBFREETYPE_VERSION}.tar.gz
@@ -149,7 +149,7 @@ else
     echo "Using existing `pwd`/freetype-${LIBFREETYPE_VERSION}"
 fi
 
-EXPAT_VERSION="2.2.3"
+EXPAT_VERSION="2.2.6"
 if [ ! -d "expat-${EXPAT_VERSION}" ]; then
     echo "Downloading expat-${EXPAT_VERSION}"
     curl -LO http://downloads.sourceforge.net/project/expat/expat/${EXPAT_VERSION}/expat-${EXPAT_VERSION}.tar.bz2
@@ -167,7 +167,7 @@ else
     echo "Using existing `pwd`/libuuid-${LIBUUID_VERSION}"
 fi
 
-LIBFONTCONFIG_VERSION="2.13.0"
+LIBFONTCONFIG_VERSION="2.13.1"
 if [ ! -d "fontconfig-${LIBFONTCONFIG_VERSION}" ]; then
     echo "Downloading fontconfig-${LIBFONTCONFIG_VERSION}"
     curl -LO https://www.freedesktop.org/software/fontconfig/release/fontconfig-${LIBFONTCONFIG_VERSION}.tar.gz
@@ -185,7 +185,7 @@ else
     echo "Using existing `pwd`/gettext-${GETTEXT_VERSION}"
 fi
 
-LIBPNG_VERSION="1.6.34"
+LIBPNG_VERSION="1.6.36"
 if [ ! -d "libpng-${LIBPNG_VERSION}" ]; then
     echo "Downloading libpng-${LIBPNG_VERSION}"
     curl -LO https://downloads.sourceforge.net/project/libpng/libpng16/${LIBPNG_VERSION}/libpng-${LIBPNG_VERSION}.tar.xz
@@ -197,8 +197,8 @@ fi
 # Download lib openssl prebuilt
 OPENSSL_PREBUILT_FOLDER="$(pwd)/openssl-prebuilt"
 if [ ! -d $OPENSSL_PREBUILT_FOLDER/android ]; then
-    curl -LO "https://github.com/leenjewel/openssl_for_ios_and_android/releases/download/openssl-1.0.2k/openssl.1.0.2k_for_android_ios.zip"
-    mkdir -p $OPENSSL_PREBUILT_FOLDER && unzip -q "openssl.1.0.2k_for_android_ios.zip" -d $OPENSSL_PREBUILT_FOLDER
+    curl -LO "https://github.com/leenjewel/openssl_for_ios_and_android/releases/download/android_openssl-1.1.0f_curl-7.54.1/only_android_openssl-1.1.0f_curl-7.54.1.zip"
+    mkdir -p $OPENSSL_PREBUILT_FOLDER && unzip -q "only_android_openssl-1.1.0f_curl-7.54.1.zip" -d $OPENSSL_PREBUILT_FOLDER
 fi
 
 
@@ -212,11 +212,11 @@ else
     sudo apt-get update
     sudo apt-get -y install automake autopoint libtool gperf
     # Install nasm >= 2.13 for libx264
-    if [ ! -d "nasm-2.13.03" ]; then
-        curl -LO 'http://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.xz'
-        tar -xf nasm-2.13.03.tar.xz
+    if [ ! -d "nasm-2.14.02" ]; then
+        curl -LO 'http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz'
+        tar -xf nasm-2.14.02.tar.xz
     fi
-    pushd nasm-2.13.03
+    pushd nasm-2.14.02
         ./configure --prefix=/usr
         make
         sudo make install
